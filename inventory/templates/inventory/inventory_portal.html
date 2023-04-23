@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container mt-5">
+    <div class="row card card-body">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">{{nombre}}</h1>
+            <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                    <a href="{% url 'task_detail' task.id %}">
+                        <header class="d-flex justify-content-between">
+                            {% if task.inheight %}
+                            <h3 class="fw-bold bg-warning">{{task.title}}</h3>
+                            {% else %}
+                            <h3 class="fw-bold">{{task.title}}</h3>
+                            {% endif %}
+                            <p>{{task.user.username}}</p>
+                        </header>                       
+                        <p>{{task.description}}</p>
+                        <p>{{task.executiondate}}</p>
+                        <p>{{task.datecompleted|date:'d M Y'}}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock %}
