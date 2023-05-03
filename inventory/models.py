@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class item(models.Model):
+class Item(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=False)
     type = models.CharField(max_length=200) #Stock or MRO
@@ -10,12 +10,13 @@ class item(models.Model):
     cost = models.DateField(null=True)
     date_ingoing = models.DateField(null=True, blank=True)
     date_outgoing = models.DateField(null=True, blank=True)
+    quantity = models.FloatField(null=True, blank=True)
     #user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.t + ' - by ' + self.user.username
+        return self.name + ' - ' + self.quantity
 
-class Trabajador(models.Model):
+""" class Trabajador(models.Model):
     nombres = models.CharField(max_length=200)
     apellidos = models.CharField(max_length=200)
-    dni = models.CharField(max_length=50)
+    dni = models.CharField(max_length=50) """
