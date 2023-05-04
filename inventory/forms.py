@@ -5,22 +5,33 @@ from django.utils.translation import gettext_lazy as _
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['name', 'description', 'type', 'price', 'cost', 'date_ingoing', 'date_outgoing']
+        fields = ['title', 'author', 'availability', 'synopsis', 'publisher', 'price', 'isbn',
+                  'pages', 'language', 'binding', 'clasification', 'publication_date']
         labels = {
-            'name': _('Nombre'),
-            'description': _('Descripción'),
-            'type': _('Tipo'),
+            'title': _('Titulo'),
+            'author': _('Autor'),
+            'availability': _('Disponibilidad'),
+            'synopsis': _('Sinópsis'),
+            'publisher': _('Editorial'),
             'price': _('Precio'),
-            'cost': _('Costo'),
-            'date_ingoing': _('Fecha de ingreso'),
-            'date_outgoing': _('Fecha de salida')
+            'isbn': _('ISBN'),
+            'pages': _('Nro. de Páginas'),
+            'language': _('Idioma'),
+            'binding': _('Encuadernación'),
+            'clasification': _('Clasificación'),
+            'publication_date': _('Fecha de publicación'),
         }
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Escriba un nombre'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escriba una descripción'}),
-            'type': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'price': forms.DateInput(attrs={'class': 'form-control'}),
-            'cost': forms.DateInput(attrs={'class': 'form-control'}),
-            'date_outgoing': forms.DateInput(attrs={'class': 'form-control'}),
-            'date_ingoing': forms.DateInput(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese un título'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese un autor'}),
+            'availability': forms.Select(attrs={'class': 'form-control'}),
+            'synopsis': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escriba una descripción'}),
+            'publisher': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese editorial'}),
+            'price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '$'}),
+            'isbn': forms.NumberInput(attrs={'class': 'form-control'}),
+            'pages': forms.NumberInput(attrs={'class': 'form-control'}),
+            'language': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese idioma'}),
+            'binding': forms.Select(attrs={'class': 'form-control'}),
+            'clasification': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese una clasificación'}),
+            'publication_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
