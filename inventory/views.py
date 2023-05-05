@@ -43,3 +43,9 @@ def new_item(request):
                 'form': ItemForm,
                 'error': 'Please provide valid data'
             })  """
+
+def publishers(request):
+    return render(request, 'inventory/publisher_mgmt.html')
+
+def classifications(request):
+    return render(request, 'inventory/classification_mgmt.html')
